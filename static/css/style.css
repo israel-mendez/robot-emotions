@@ -1,0 +1,201 @@
+:root {
+    --bg-color: #ffeb3b;
+    --card-bg: #ffffff;
+    --text-color: #000000;
+    --accent-cyan: #00e5ff;
+    --accent-pink: #ff4081;
+    --accent-green: #00e676;
+    --accent-purple: #b388ff;
+    --accent-orange: #ff9100;
+    --border-width: 4px;
+    --shadow-offset: 6px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+    margin: 0;
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background: var(--card-bg);
+    border: var(--border-width) solid var(--text-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--text-color);
+    padding: 30px;
+    max-width: 720px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    background: var(--accent-cyan);
+    padding: 12px 16px;
+    border: var(--border-width) solid var(--text-color);
+    box-shadow: 4px 4px 0px var(--text-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h2, h3 {
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+p {
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+.step-card {
+    border: var(--border-width) solid var(--text-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #f5f5f5;
+    box-shadow: 4px 4px 0px var(--text-color);
+    transition: all 0.15s ease;
+}
+
+.step-card.active {
+    background: #ffffff;
+    border-color: var(--text-color);
+}
+
+.step-card.completed {
+    background: #e8f5e9;
+}
+
+.step-card.locked {
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background: var(--accent-pink);
+    color: #ffffff;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border: var(--border-width) solid var(--text-color);
+    box-shadow: 4px 4px 0px var(--text-color);
+    cursor: pointer;
+    transition: all 0.1s ease;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--text-color);
+}
+
+.btn:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--text-color);
+}
+
+.btn:disabled {
+    background: #bdbdbd;
+    color: #616161;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-cyan {
+    background: var(--accent-cyan);
+    color: #000000;
+}
+
+.btn-success {
+    background: var(--accent-green);
+    color: #000000;
+}
+
+.btn-purple {
+    background: var(--accent-purple);
+    color: #000000;
+}
+
+.btn-orange {
+    background: var(--accent-orange);
+    color: #000000;
+}
+
+.select-box {
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px;
+    border: var(--border-width) solid var(--text-color);
+    background: #ffffff;
+    box-shadow: 4px 4px 0px var(--text-color);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border: 3px solid var(--text-color);
+    box-shadow: 2px 2px 0px var(--text-color);
+}
+
+.badge-pending {
+    background: #ffe082;
+    color: #000000;
+}
+
+.badge-success {
+    background: var(--accent-green);
+    color: #000000;
+}
+
+.badge-error {
+    background: #ff5252;
+    color: #ffffff;
+}
+
+.console-box {
+    background: #000000;
+    color: var(--accent-green);
+    border: var(--border-width) solid var(--text-color);
+    padding: 12px;
+    font-size: 0.95rem;
+    margin-top: 12px;
+    min-height: 48px;
+    word-break: break-word;
+}
+
+.grid-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}

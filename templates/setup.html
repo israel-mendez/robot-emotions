@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEX IQ Setup Wizard | Robot Emotions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>VEX IQ Setup Wizard</h1>
+        <p>Complete each step below to link your VEX IQ Gen 2 Clawbot to the web server.</p>
+
+        <!-- STEP 1: HARDWARE POWER & SLOT 1 -->
+        <div class="step-card active" id="step-1">
+            <div class="step-header">
+                <h2>Step 1: Hardware &amp; Slot 1</h2>
+                <span class="status-badge badge-pending" id="badge-step-1">In Progress</span>
+            </div>
+            <p>1. Turn ON your VEX IQ Robot Brain and VEX Controller (confirm they pair).</p>
+            <p>2. Make sure the <strong>VEXcode IQ desktop app is CLOSED</strong> so the USB COM port is free.</p>
+            <p>3. On the Brain, run <strong>Slot 1</strong> so the screen reads: <code>VIRTUAL CTRL READY</code>.</p>
+            <button class="btn btn-cyan" id="btn-step-1" onclick="completeStep1()">
+                Hardware is On &amp; Running Slot 1
+            </button>
+        </div>
+
+        <!-- STEP 2: SERIAL PORT CONNECTION -->
+        <div class="step-card locked" id="step-2">
+            <div class="step-header">
+                <h2>Step 2: USB Serial Link</h2>
+                <span class="status-badge badge-pending" id="badge-step-2">Locked</span>
+            </div>
+            <p>Select your VEX IQ USB Virtual COM Port (or use Simulation Mode if testing unplugged):</p>
+            <div>
+                <select id="port-select" class="select-box">
+                    <option value="">-- Click "Scan Ports" first --</option>
+                </select>
+            </div>
+            <button class="btn btn-cyan" onclick="scanPorts()">Scan Ports</button>
+            <button class="btn" id="btn-connect" onclick="connectPort()">Connect Port</button>
+            <button class="btn btn-purple" onclick="enableSimulationMode()">Use Simulation Mode</button>
+            <div class="console-box" id="port-console">Waiting for port scan...</div>
+        </div>
+
+        <!-- STEP 3: HANDSHAKE TEST (PING -> PONG_OK) -->
+        <div class="step-card locked" id="step-3">
+            <div class="step-header">
+                <h2>Step 3: Command Handshake Test</h2>
+                <span class="status-badge badge-pending" id="badge-step-3">Locked</span>
+            </div>
+            <p>Send a test <code>ping</code> signal to confirm the robot receives commands and replies <code>PONG_OK</code>.</p>
+            <button class="btn btn-orange" id="btn-ping" onclick="testPing()">Send Test Ping</button>
+            <div class="console-box" id="ping-console">Waiting for test ping...</div>
+        </div>
+
+        <!-- STEP 4: LAUNCH DASHBOARD -->
+        <div class="step-card locked" id="step-4">
+            <div class="step-header">
+                <h2>Step 4: Ready to Operate!</h2>
+                <span class="status-badge badge-pending" id="badge-step-4">Locked</span>
+            </div>
+            <p>Your VEX IQ Clawbot communication bridge is verified and ready for operation.</p>
+            <a href="/dashboard" class="btn btn-success" id="btn-launch">Launch Robot Dashboard &rarr;</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/setup.js') }}"></script>
+</body>
+</html>
